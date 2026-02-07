@@ -9,24 +9,44 @@
 
 <div class="container">
 
+    <!-- ===== SIDEBAR ===== -->
     <div class="sidebar">
-        <h2>🎵 Playlist</h2>
-        <ul>
-            <li onclick="playSong('Mừng chúc thọ Cha Mẹ', 'https://files.catbox.moe/tfi1aj.mp3')">Mừng chúc thọ Cha Mẹ</li>
-            <li onclick="playSong('Bài 2', 'LINK_MP3_2')">Bài hát 2</li>
+        <div class="profile">
+            <div class="avatar">🎵</div>
+            <h2>My Playlist</h2>
+        </div>
+
+        <ul class="playlist">
+            <li onclick="playSong(event,'Mừng chúc thọ Cha Mẹ','https://files.catbox.moe/tfi1aj.mp3')">
+                <span class="song-name">Mừng chúc thọ Cha Mẹ</span>
+                <span class="duration">2:41</span>
+            </li>
+
+            <li onclick="playSong(event,'Bài hát 2','LINK_MP3_2')">
+                <span class="song-name">Bài hát 2</span>
+                <span class="duration">3:12</span>
+            </li>
         </ul>
     </div>
 
+    <!-- ===== PLAYER ===== -->
     <div class="player">
+
         <h1 id="songTitle">Chọn bài hát</h1>
 
-        <div class="disc-container">
-    <div class="disc" id="disc">
-        <div class="center"></div>
-    </div>
-</div>
+        <div class="visual-area">
+            <div class="disc-container">
+                <div class="disc" id="disc">
+                    <div class="center"></div>
+                </div>
+            </div>
 
-        <audio id="audioPlayer" controls preload="metadata"></audio>
+            <!-- Nốt nhạc bay -->
+            <div id="musicNotes"></div>
+        </div>
+
+        <audio id="audioPlayer" controls></audio>
+
     </div>
 
 </div>
