@@ -20,83 +20,36 @@ body {
     backdrop-filter: blur(15px);
     padding: 30px;
     box-shadow: inset -1px 0 0 rgba(255,255,255,0.05);
-    overflow-y: auto;
-}
-
-/* ===== PROFILE ===== */
-.profile {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.avatar {
-    font-size: 40px;
-    background: linear-gradient(45deg,#ff512f,#dd2476);
-    width: 80px;
-    height: 80px;
-    line-height: 80px;
-    border-radius: 50%;
-    margin: auto;
-    box-shadow: 0 0 25px rgba(255,0,100,0.6);
 }
 
 .sidebar h2 {
-    margin-top: 15px;
+    margin-bottom: 30px;
     font-size: 22px;
     letter-spacing: 1px;
 }
 
-/* ===== MENU GROUP (2025 / 2004) ===== */
-.menu-group {
-    background: rgba(255, 255, 255, 0.06);
-    padding: 15px;
-    border-radius: 16px;
-    margin-bottom: 25px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 0 20px rgba(0,0,0,0.3);
-}
-
-.menu-title {
-    font-size: 15px;
-    font-weight: 600;
-    margin-bottom: 12px;
-    letter-spacing: 1px;
-    opacity: 0.9;
-}
-
-/* ===== PLAYLIST ===== */
-.playlist {
+.sidebar ul {
     list-style: none;
     padding: 0;
-    margin: 0;
 }
 
-.playlist li {
-    padding: 16px;
-    margin: 12px 0;
+.sidebar li {
+    padding: 18px;
+    margin: 15px 0;
     background: rgba(255,255,255,0.05);
     border-radius: 14px;
     cursor: pointer;
     transition: 0.3s;
     font-size: 15px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
-.playlist li:hover {
+.sidebar li:hover {
     background: linear-gradient(90deg, #00c6ff, #0072ff);
     transform: translateX(8px);
 }
 
-.playlist li.active {
-    background: linear-gradient(90deg,#ff512f,#dd2476);
-    box-shadow: 0 0 20px rgba(255,0,100,0.5);
-}
-
-.duration {
-    font-size: 13px;
-    opacity: 0.7;
+.sidebar li.active {
+    background: linear-gradient(90deg, #ff512f, #dd2476);
 }
 
 /* ===== PLAYER ===== */
@@ -168,6 +121,44 @@ audio {
     padding: 10px;
 }
 
+/* ===== ANIMATION ===== */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+/* ===== SIDEBAR UPGRADE ===== */
+.profile {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.avatar {
+    font-size: 40px;
+    background: linear-gradient(45deg,#ff512f,#dd2476);
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+    margin: auto;
+    box-shadow: 0 0 25px rgba(255,0,100,0.6);
+}
+
+.playlist li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.playlist li.active {
+    background: linear-gradient(90deg,#ff512f,#dd2476);
+    box-shadow: 0 0 20px rgba(255,0,100,0.5);
+}
+
+.duration {
+    font-size: 13px;
+    opacity: 0.7;
+}
+
 /* ===== VISUAL AREA ===== */
 .visual-area {
     position: relative;
@@ -200,10 +191,4 @@ audio {
         transform: translateY(-200px) scale(1.5);
         opacity: 0;
     }
-}
-
-/* ===== DISC SPIN ===== */
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
 }
