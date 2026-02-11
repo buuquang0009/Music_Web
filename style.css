@@ -192,3 +192,26 @@ audio {
         opacity: 0;
     }
 }
+/* ===== MENU GROUP (2025 / 2004) ===== */
+.menu-group {
+    background: rgba(255, 255, 255, 0.06);
+    padding: 12px;
+    border-radius: 14px;
+    margin-bottom: 25px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.menu-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    padding-left: 5px;
+    letter-spacing: 1px;
+    opacity: 0.9;
+}
+
+/* bỏ margin của li cũ để nhìn gọn trong group */
+.menu-group .playlist li {
+    margin: 10px 0;
+}
