@@ -4,7 +4,7 @@ body {
     font-family: 'Segoe UI', sans-serif;
     background: radial-gradient(circle at top left, #1f2c3d, #0f1720);
     color: white;
-    overflow: hidden;
+    overflow: hidden; /* Giữ nguyên để player không bị scroll */
 }
 
 /* ===== LAYOUT ===== */
@@ -16,16 +16,85 @@ body {
 /* ===== SIDEBAR ===== */
 .sidebar {
     width: 28%;
-    height: 100vh;          /* Chiếm full chiều cao màn hình */
-    overflow-y: auto;       /* Cho phép cuộn dọc */
-    overflow-x: hidden;     /* Không cuộn ngang */
-
+    height: 100vh;              /* Chiều cao full màn hình */
+    overflow-y: auto;           /* Bật thanh trượt dọc */
+    overflow-x: hidden;
     background: rgba(0, 0, 0, 0.4);
     backdrop-filter: blur(15px);
     padding: 30px;
     box-shadow: inset -1px 0 0 rgba(255,255,255,0.05);
 }
 
+/* Scrollbar đẹp hơn */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: linear-gradient(#ff512f,#dd2476);
+    border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+/* ===== PROFILE ===== */
+.profile {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.avatar {
+    font-size: 40px;
+    background: linear-gradient(45deg,#ff512f,#dd2476);
+    width: 80px;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 50%;
+    margin: auto;
+    box-shadow: 0 0 25px rgba(255,0,100,0.6);
+}
+
+.sidebar h2 {
+    margin-top: 20px;
+    font-size: 22px;
+    letter-spacing: 1px;
+}
+
+/* ===== PLAYLIST ===== */
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    padding: 18px;
+    margin: 15px 0;
+    background: rgba(255,255,255,0.05);
+    border-radius: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.sidebar li:hover {
+    background: linear-gradient(90deg, #00c6ff, #0072ff);
+    transform: translateX(8px);
+}
+
+.sidebar li.active {
+    background: linear-gradient(90deg,#ff512f,#dd2476);
+    box-shadow: 0 0 20px rgba(255,0,100,0.5);
+}
+
+.duration {
+    font-size: 13px;
+    opacity: 0.7;
+}
 
 /* ===== PLAYER ===== */
 .player {
@@ -41,24 +110,6 @@ body {
     font-size: 28px;
     margin-bottom: 40px;
     letter-spacing: 1px;
-}
-
-/* Scrollbar đẹp */
-.sidebar::-webkit-scrollbar {
-    width: 6px;
-}
-
-.sidebar::-webkit-scrollbar-track {
-    background: transparent;
-}
-
-.sidebar::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.2);
-    border-radius: 10px;
-}
-
-.sidebar::-webkit-scrollbar-thumb:hover {
-    background: rgba(255,255,255,0.4);
 }
 
 /* ===== DISC AREA ===== */
@@ -85,7 +136,7 @@ body {
     position: relative;
 }
 
-/* Glow khi phát nhạc */
+/* Glow khi phát */
 .disc.playing {
     box-shadow:
         0 0 60px rgba(255,0,80,0.6),
@@ -112,44 +163,6 @@ audio {
     border-radius: 20px;
     background: rgba(255,255,255,0.1);
     padding: 10px;
-}
-
-/* ===== ANIMATION ===== */
-@keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-/* ===== SIDEBAR UPGRADE ===== */
-.profile {
-    text-align: center;
-    margin-bottom: 40px;
-}
-
-.avatar {
-    font-size: 40px;
-    background: linear-gradient(45deg,#ff512f,#dd2476);
-    width: 80px;
-    height: 80px;
-    line-height: 80px;
-    border-radius: 50%;
-    margin: auto;
-    box-shadow: 0 0 25px rgba(255,0,100,0.6);
-}
-
-.playlist li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.playlist li.active {
-    background: linear-gradient(90deg,#ff512f,#dd2476);
-    box-shadow: 0 0 20px rgba(255,0,100,0.5);
-}
-
-.duration {
-    font-size: 13px;
-    opacity: 0.7;
 }
 
 /* ===== VISUAL AREA ===== */
@@ -184,4 +197,10 @@ audio {
         transform: translateY(-200px) scale(1.5);
         opacity: 0;
     }
+}
+
+/* ===== DISC SPIN ===== */
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
 }
