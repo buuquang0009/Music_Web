@@ -2,39 +2,72 @@ const audio = document.getElementById("audioPlayer");
 const title = document.getElementById("songTitle");
 const disc = document.getElementById("disc");
 const notesContainer = document.getElementById("musicNotes");
+const playlistItems = document.querySelectorAll(".playlist li");
+const playAllBtn = document.getElementById("playAllBtn");
 
+let currentIndex = 0;
+let isPlayingAll = false;
+let noteInterval;
+
+/* ===== PLAY SONG ===== */
 function playSong(event, name, file) {
 
     title.innerText = name;
     audio.src = file;
     audio.play();
 
-    document.querySelectorAll(".playlist li")
-        .forEach(li => li.classList.remove("active"));
+    playlistItems.forEach(li => li.classList.remove("active"));
 
-    event.currentTarget.classList.add("active");
+    if (event) {
+        event.currentTarget.classList.add("active");
+        currentIndex = [...playlistItems].indexOf(event.currentTarget);
+    }
 }
 
-// Khi nhạc chạy
+/* ===== PLAY ALL BUTTON ===== */
+playAllBtn.addEventListener("click", () => {
+
+    if (playlistItems.length === 0) return;
+
+    currentIndex = 0;
+    isPlayingAll = true;
+
+    playlistItems[currentIndex].click();
+});
+
+/* ===== AUTO NEXT ===== */
+audio.addEventListener("ended", () => {
+
+    clearInterval(noteInterval);
+
+    if (isPlayingAll) {
+        currentIndex++;
+
+        if (currentIndex < playlistItems.length) {
+            playlistItems[currentIndex].click();
+        } else {
+            isPlayingAll = false;
+        }
+    }
+});
+
+/* ===== DISC EFFECT ===== */
 audio.addEventListener("play", () => {
     disc.style.animationPlayState = "running";
     disc.classList.add("playing");
     startNotes();
 });
 
-// Khi dừng
 audio.addEventListener("pause", () => {
     disc.style.animationPlayState = "paused";
     disc.classList.remove("playing");
+    clearInterval(noteInterval);
 });
 
-// Tạo nốt nhạc bay
-let noteInterval;
-
+/* ===== NOTES ===== */
 function startNotes() {
-    noteInterval = setInterval(() => {
-        createNote();
-    }, 400);
+    clearInterval(noteInterval);
+    noteInterval = setInterval(createNote, 400);
 }
 
 function createNote() {
@@ -47,43 +80,5 @@ function createNote() {
 
     notesContainer.appendChild(note);
 
-    setTimeout(() => {
-        note.remove();
-    }, 3000);
+    setTimeout(() => note.remove(), 3000);
 }
-
-audio.addEventListener("pause", () => {
-    clearInterval(noteInterval);
-});
-
-audio.addEventListener("ended", () => {
-    clearInterval(noteInterval);
-});
-
-const audio = document.getElementById("audioPlayer");
-const playAllBtn = document.getElementById("playAllBtn");
-const playlistItems = document.querySelectorAll(".playlist li");
-
-let currentIndex = 0;
-let isPlayingAll = false;
-
-function playByIndex(index) {
-    playlistItems[index].click();
-}
-
-playAllBtn.addEventListener("click", () => {
-    currentIndex = 0;
-    isPlayingAll = true;
-    playByIndex(currentIndex);
-});
-
-audio.addEventListener("ended", () => {
-    if (isPlayingAll) {
-        currentIndex++;
-        if (currentIndex < playlistItems.length) {
-            playByIndex(currentIndex);
-        } else {
-            isPlayingAll = false;
-        }
-    }
-});
