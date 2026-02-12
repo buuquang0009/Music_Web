@@ -262,3 +262,25 @@ audio {
         opacity: 0;
     }
 }
+
+/* ===== PLAY ALL BUTTON ===== */
+#playAllBtn {
+    position: absolute;
+    top: 25px;
+    left: 30px;
+    padding: 10px 18px;
+    border-radius: 25px;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    background: linear-gradient(45deg, #ff512f, #dd2476);
+    color: white;
+    box-shadow: 0 0 15px rgba(255,0,100,0.5);
+    transition: 0.3s;
+    z-index: 10;
+}
+
+#playAllBtn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 25px rgba(255,0,120,0.7);
+}
