@@ -28,10 +28,10 @@ body {
 
 .sidebar h2 {
     margin-bottom: 30px;
-    font-family: 'Playfair Display', serif;
-    font-size: 36px;
-    font-weight: 700;
-    letter-spacing: 1px;
+    font-family: 'Cinzel', serif;
+    font-size: 38px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
     position: relative;
     overflow: hidden;
 
