@@ -123,6 +123,7 @@ body {
 
 /* Glow khi phát nhạc */
 .disc.playing {
+    animation-play-state: running;
     box-shadow:
         0 0 60px rgba(255,0,80,0.6),
         0 0 120px rgba(255,0,80,0.3),
