@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
     const audio = document.getElementById("audioPlayer");
     const title = document.getElementById("songTitle");
@@ -7,27 +7,24 @@ document.addEventListener("DOMContentLoaded", () => {
     let currentIndex = -1;
     let isPlayingAll = false;
 
-    /* ===== MOVE FIRST 3 SONGS ===== */
     const mainPlaylist = document.querySelector(".playlist");
     const topPlaylist = document.querySelector(".top-playlist");
 
-    const firstThree = [...mainPlaylist.querySelectorAll("li")].slice(0, 3);
+    // Move first 3 songs to top box
+    const firstThree = Array.from(mainPlaylist.querySelectorAll("li")).slice(0, 3);
     firstThree.forEach(li => topPlaylist.appendChild(li));
 
-    /* ===== GET ALL SONGS ===== */
     function getSongs() {
         return Array.from(document.querySelectorAll("li[data-file]"));
     }
 
-    /* ===== PLAY BY INDEX ===== */
     function playByIndex(index) {
-
         const songs = getSongs();
         if (!songs[index]) return;
 
         const song = songs[index];
 
-        title.innerText = song.dataset.name;
+        title.textContent = song.dataset.name;
         audio.src = song.dataset.file;
         audio.play();
 
@@ -37,9 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
         currentIndex = index;
     }
 
-    /* ===== CLICK SONG ===== */
-    document.addEventListener("click", (e) => {
-
+    // Click song
+    document.addEventListener("click", function (e) {
         const li = e.target.closest("li[data-file]");
         if (!li) return;
 
@@ -50,9 +46,8 @@ document.addEventListener("DOMContentLoaded", () => {
         playByIndex(index);
     });
 
-    /* ===== PLAY ALL ===== */
-    playAllBtn.addEventListener("click", () => {
-
+    // Play all
+    playAllBtn.addEventListener("click", function () {
         const songs = getSongs();
         if (songs.length === 0) return;
 
@@ -63,13 +58,11 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 
-    /* ===== AUTO NEXT ===== */
-    audio.addEventListener("ended", () => {
-
+    // Auto next
+    audio.addEventListener("ended", function () {
         if (!isPlayingAll) return;
 
         currentIndex++;
-
         const songs = getSongs();
 
         if (currentIndex < songs.length) {
