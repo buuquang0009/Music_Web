@@ -2,42 +2,33 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const audio = document.getElementById("audioPlayer");
     const title = document.getElementById("songTitle");
-    const disc = document.getElementById("disc");
-    const notesContainer = document.getElementById("musicNotes");
     const playAllBtn = document.getElementById("playAllBtn");
 
     let currentIndex = -1;
     let isPlayingAll = false;
-    let noteInterval;
 
     /* ===== MOVE FIRST 3 SONGS ===== */
     const mainPlaylist = document.querySelector(".playlist");
     const topPlaylist = document.querySelector(".top-playlist");
 
-    const firstThree = mainPlaylist.querySelectorAll("li");
+    const firstThree = [...mainPlaylist.querySelectorAll("li")].slice(0, 3);
+    firstThree.forEach(li => topPlaylist.appendChild(li));
 
-    for (let i = 0; i < 3; i++) {
-        if (firstThree[i]) {
-            topPlaylist.appendChild(firstThree[i]);
-        }
+    /* ===== GET ALL SONGS ===== */
+    function getSongs() {
+        return Array.from(document.querySelectorAll("li[data-file]"));
     }
 
-    function getAllSongs() {
-        return Array.from(document.querySelectorAll(".playlist li, .top-playlist li"));
-    }
-
+    /* ===== PLAY BY INDEX ===== */
     function playByIndex(index) {
 
-        const songs = getAllSongs();
-        if (index < 0 || index >= songs.length) return;
+        const songs = getSongs();
+        if (!songs[index]) return;
 
         const song = songs[index];
 
-        const name = song.dataset.name;
-        const file = song.dataset.file;
-
-        title.innerText = name;
-        audio.src = file;
+        title.innerText = song.dataset.name;
+        audio.src = song.dataset.file;
         audio.play();
 
         songs.forEach(li => li.classList.remove("active"));
@@ -49,10 +40,10 @@ document.addEventListener("DOMContentLoaded", () => {
     /* ===== CLICK SONG ===== */
     document.addEventListener("click", (e) => {
 
-        const li = e.target.closest(".playlist li, .top-playlist li");
+        const li = e.target.closest("li[data-file]");
         if (!li) return;
 
-        const songs = getAllSongs();
+        const songs = getSongs();
         const index = songs.indexOf(li);
 
         isPlayingAll = false;
@@ -60,28 +51,26 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     /* ===== PLAY ALL ===== */
-    if (playAllBtn) {
-        playAllBtn.addEventListener("click", () => {
+    playAllBtn.addEventListener("click", () => {
 
-            const songs = getAllSongs();
-            if (songs.length === 0) return;
+        const songs = getSongs();
+        if (songs.length === 0) return;
 
-            isPlayingAll = true;
+        isPlayingAll = true;
 
-            if (currentIndex === -1) {
-                playByIndex(0);
-            }
-        });
-    }
+        if (currentIndex === -1) {
+            playByIndex(0);
+        }
+    });
 
     /* ===== AUTO NEXT ===== */
     audio.addEventListener("ended", () => {
 
         if (!isPlayingAll) return;
 
-        const songs = getAllSongs();
-
         currentIndex++;
+
+        const songs = getSongs();
 
         if (currentIndex < songs.length) {
             playByIndex(currentIndex);
