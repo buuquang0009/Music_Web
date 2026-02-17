@@ -18,7 +18,9 @@ document.addEventListener("DOMContentLoaded", () => {
         audio.src = file;
         audio.play();
 
-        playlistItems.forEach(li => li.classList.remove("active"));
+        document.querySelectorAll(".playlist li, .top-playlist li")
+    .forEach(li => li.classList.remove("active"));
+
 
         if (event) {
             event.currentTarget.classList.add("active");
