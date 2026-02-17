@@ -38,10 +38,17 @@ if (playAllBtn) {
 
         if (allSongs.length === 0) return;
 
-        currentIndex = 0;
         isPlayingAll = true;
 
-        allSongs[currentIndex].click();
+        // Tìm bài đang active
+        const activeSong = document.querySelector(".playlist li.active, .top-playlist li.active");
+
+        if (activeSong) {
+            currentIndex = [...allSongs].indexOf(activeSong);
+        } else {
+            currentIndex = 0;
+            allSongs[currentIndex].click();
+        }
     });
 }
 
