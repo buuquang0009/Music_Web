@@ -31,33 +31,37 @@ document.addEventListener("DOMContentLoaded", () => {
     window.playSong = playSong; // QUAN TRỌNG (để onclick trong HTML dùng được)
 
     /* ===== PLAY ALL BUTTON ===== */
-    if (playAllBtn) {
-        playAllBtn.addEventListener("click", () => {
+if (playAllBtn) {
+    playAllBtn.addEventListener("click", () => {
 
-            if (playlistItems.length === 0) return;
+        const allSongs = document.querySelectorAll(".playlist li, .top-playlist li");
 
-            currentIndex = 0;
-            isPlayingAll = true;
+        if (allSongs.length === 0) return;
 
-            playlistItems[currentIndex].click();
-        });
-    }
+        currentIndex = 0;
+        isPlayingAll = true;
+
+        allSongs[currentIndex].click();
+    });
+}
+
 
     /* ===== AUTO NEXT ===== */
-    audio.addEventListener("ended", () => {
+audio.addEventListener("ended", () => {
 
-        clearInterval(noteInterval);
+    if (!isPlayingAll) return;
 
-        if (isPlayingAll) {
-            currentIndex++;
+    const allSongs = document.querySelectorAll(".playlist li, .top-playlist li");
 
-            if (currentIndex < playlistItems.length) {
-                playlistItems[currentIndex].click();
-            } else {
-                isPlayingAll = false;
-            }
-        }
-    });
+    currentIndex++;
+
+    if (currentIndex < allSongs.length) {
+        allSongs[currentIndex].click();
+    } else {
+        isPlayingAll = false;
+    }
+});
+
 
     /* ===== DISC EFFECT ===== */
     audio.addEventListener("play", () => {
