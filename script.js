@@ -6,11 +6,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const notesContainer = document.getElementById("musicNotes");
     const playAllBtn = document.getElementById("playAllBtn");
 
-    let currentIndex = 0;
+    let currentIndex = -1;
     let isPlayingAll = false;
     let noteInterval;
 
-    /* ================= MOVE FIRST 3 SONGS ================= */
+    /* ===== MOVE FIRST 3 SONGS ===== */
     const mainPlaylist = document.querySelector(".playlist");
     const topPlaylist = document.querySelector(".top-playlist");
 
@@ -22,96 +22,72 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    /* ================= GET ALL SONGS ================= */
     function getAllSongs() {
-        return document.querySelectorAll(".playlist li, .top-playlist li");
+        return Array.from(document.querySelectorAll(".playlist li, .top-playlist li"));
     }
 
-    /* ================= PLAY SONG ================= */
-    function playSong(event, name, file) {
+    function playByIndex(index) {
 
-        const allSongs = getAllSongs();
+        const songs = getAllSongs();
+        if (index < 0 || index >= songs.length) return;
+
+        const song = songs[index];
+
+        const name = song.dataset.name;
+        const file = song.dataset.file;
 
         title.innerText = name;
         audio.src = file;
         audio.play();
 
-        allSongs.forEach(li => li.classList.remove("active"));
+        songs.forEach(li => li.classList.remove("active"));
+        song.classList.add("active");
 
-        if (event) {
-            event.currentTarget.classList.add("active");
-            currentIndex = [...allSongs].indexOf(event.currentTarget);
-        }
+        currentIndex = index;
     }
 
-    window.playSong = playSong;
+    /* ===== CLICK SONG ===== */
+    document.addEventListener("click", (e) => {
 
-    /* ================= PLAY ALL ================= */
+        const li = e.target.closest(".playlist li, .top-playlist li");
+        if (!li) return;
+
+        const songs = getAllSongs();
+        const index = songs.indexOf(li);
+
+        isPlayingAll = false;
+        playByIndex(index);
+    });
+
+    /* ===== PLAY ALL ===== */
     if (playAllBtn) {
         playAllBtn.addEventListener("click", () => {
 
-            const allSongs = getAllSongs();
-            if (allSongs.length === 0) return;
+            const songs = getAllSongs();
+            if (songs.length === 0) return;
 
             isPlayingAll = true;
 
-            const activeSong = document.querySelector(".active");
-
-            if (activeSong) {
-                currentIndex = [...allSongs].indexOf(activeSong);
-            } else {
-                currentIndex = 0;
-                allSongs[currentIndex].click();
+            if (currentIndex === -1) {
+                playByIndex(0);
             }
         });
     }
 
-    /* ================= AUTO NEXT ================= */
+    /* ===== AUTO NEXT ===== */
     audio.addEventListener("ended", () => {
 
         if (!isPlayingAll) return;
 
-        const allSongs = getAllSongs();
+        const songs = getAllSongs();
 
         currentIndex++;
 
-        if (currentIndex < allSongs.length) {
-            allSongs[currentIndex].click();
+        if (currentIndex < songs.length) {
+            playByIndex(currentIndex);
         } else {
             isPlayingAll = false;
         }
     });
-
-    /* ================= DISC EFFECT ================= */
-    audio.addEventListener("play", () => {
-        disc.style.animationPlayState = "running";
-        disc.classList.add("playing");
-        startNotes();
-    });
-
-    audio.addEventListener("pause", () => {
-        disc.style.animationPlayState = "paused";
-        disc.classList.remove("playing");
-        clearInterval(noteInterval);
-    });
-
-    /* ================= MUSIC NOTES ================= */
-    function startNotes() {
-        clearInterval(noteInterval);
-        noteInterval = setInterval(createNote, 400);
-    }
-
-    function createNote() {
-        const note = document.createElement("div");
-        note.classList.add("note");
-        note.innerText = "♪";
-
-        note.style.left = Math.random() * 80 + "%";
-        note.style.top = "60%";
-
-        notesContainer.appendChild(note);
-
-        setTimeout(() => note.remove(), 3000);
-    }
 
 });
