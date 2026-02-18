@@ -400,3 +400,19 @@ audio {
     text-align: right;
 }
 
+.playlist li {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.year-label {
+    font-weight: bold;
+    cursor: default;
+    opacity: 0.7;
+}
+
+li.active {
+    background: rgba(255,255,255,0.15);
+}
