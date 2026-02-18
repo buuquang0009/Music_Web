@@ -247,6 +247,32 @@ audio {
     opacity: 0.6;
 }
 
+/* ================= AUDIO STYLE (MỜ NHẸ) ================= */
+audio {
+    width: 70%;
+    max-width: 600px;
+    border-radius: 30px;
+    opacity: 0.85;              /* Làm mờ tổng thể */
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+}
+
+/* Thanh progress (Chrome, Edge) */
+audio::-webkit-media-controls-panel {
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+}
+
+/* Thanh timeline */
+audio::-webkit-media-controls-timeline {
+    opacity: 0.8;
+}
+
+/* Nút play */
+audio::-webkit-media-controls-play-button {
+    opacity: 0.9;
+}
+
 /* ================= HIDE SOURCE LIST ================= */
 .all-songs {
     display: none;
