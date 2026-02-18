@@ -1,99 +1,75 @@
-/* ===== RESET ===== */
+/* ================= RESET ================= */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* ===== BODY ===== */
+/* ================= BODY ================= */
 body {
     font-family: Arial, sans-serif;
     background: linear-gradient(135deg, #141e30, #243b55);
     color: white;
-    padding: 24px;
+    height: 100vh;
+    display: flex;
 }
 
-/* ===== TITLE ===== */
-h1 {
+/* ================= SIDEBAR ================= */
+.sidebar {
+    width: 360px;
+    background: rgba(0,0,0,0.35);
+    padding: 25px 20px;
+    overflow-y: auto;
+}
+
+.sidebar h1 {
     text-align: center;
-    margin-bottom: 25px;
-    font-size: 32px;
-    letter-spacing: 1px;
+    margin-bottom: 30px;
+    font-size: 28px;
+    letter-spacing: 2px;
 }
 
-/* ===== PLAY ALL BUTTON ===== */
-#playAllBtn {
-    display: block;
-    margin: 0 auto 30px;
-    padding: 14px 28px;
-    border: none;
-    border-radius: 30px;
-    background: linear-gradient(90deg, #ff512f, #dd2476);
-    color: white;
-    font-size: 17px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 20px rgba(255, 0, 100, 0.3);
-}
-
-#playAllBtn:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 25px rgba(255, 0, 100, 0.5);
-}
-
-/* ===== SECTION (MỖI NĂM) ===== */
+/* ===== SECTION (YEAR) ===== */
 section {
-    margin-bottom: 35px;
+    margin-bottom: 30px;
 }
 
 section h2 {
-    margin-bottom: 15px;
-    padding-bottom: 6px;
-    font-size: 20px;
-    border-bottom: 2px solid rgba(255,255,255,0.2);
+    margin-bottom: 14px;
+    font-size: 18px;
     opacity: 0.9;
 }
 
-/* ===== PLAYLIST ===== */
-.playlist,
-.top-playlist {
+/* ================= PLAYLIST ================= */
+.playlist {
     list-style: none;
-    padding: 0;
 }
 
-/* ===== SONG ITEM (TO HƠN + PREMIUM) ===== */
-.playlist li,
-.top-playlist li {
+/* ===== SONG ITEM ===== */
+.playlist li {
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
 
-    padding: 16px 20px;      /* Tăng chiều cao */
-    margin-bottom: 14px;     /* Khoảng cách rộng hơn */
+    padding: 14px 18px;
+    margin-bottom: 12px;
 
-    font-size: 17px;
+    font-size: 16px;
 
-    background: rgba(255,255,255,0.07);
-    backdrop-filter: blur(6px);
-    border-radius: 18px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 14px;
 
     cursor: pointer;
-    transition: all 0.25s ease;
+    transition: 0.2s ease;
 }
 
-/* ===== HOVER ===== */
-.playlist li:hover,
-.top-playlist li:hover {
-    background: rgba(255,255,255,0.15);
-    transform: translateX(6px);
+.playlist li:hover {
+    background: rgba(255,255,255,0.16);
 }
 
-/* ===== ACTIVE SONG ===== */
-.playlist li.active,
-.top-playlist li.active {
-    background: linear-gradient(90deg, #ff512f, #dd2476);
-    box-shadow: 0 0 25px rgba(255, 0, 120, 0.6);
+/* ===== ACTIVE ===== */
+.playlist li.active {
+    background: #ff4c60;
 }
 
 /* ===== SONG NAME ===== */
@@ -102,23 +78,62 @@ section h2 {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    font-weight: 500;
 }
 
 /* ===== DURATION ===== */
 .duration {
-    flex-shrink: 0;
-    min-width: 55px;
+    min-width: 60px;
     text-align: right;
-    font-size: 15px;
-    opacity: 0.85;
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* ================= MAIN PLAYER ================= */
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ===== PLAY ALL BUTTON ===== */
+#playAllBtn {
+    padding: 14px 30px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #ff512f, #dd2476);
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 40px;
+    transition: 0.2s ease;
+}
+
+#playAllBtn:hover {
+    transform: translateY(-3px);
+}
+
+/* ===== TITLE ===== */
+#songTitle {
+    margin-bottom: 25px;
+    font-size: 26px;
+    font-weight: bold;
+}
+
+/* ===== VINYL IMAGE (NẾU CÓ) ===== */
+.vinyl {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    background: radial-gradient(circle at center, red 0%, darkred 30%, black 70%);
+    margin-bottom: 40px;
 }
 
 /* ===== AUDIO PLAYER ===== */
 audio {
-    width: 100%;
-    margin-top: 25px;
-    border-radius: 20px;
+    width: 70%;
+    max-width: 600px;
 }
 
 /* ===== ẨN DANH SÁCH GỐC ===== */
