@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Music Player</title>
+
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="favicon.png">
+    <link rel="shortcut icon" href="favicon.png">
+
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <div class="container">
@@ -12,66 +19,114 @@
     <!-- ===== SIDEBAR ===== -->
     <div class="sidebar">
 
-        <div class="logo">
-            <div class="icon">🎵</div>
-            <h1>MY PLAYLIST</h1>
+        <div class="profile">
+            <div class="avatar">🎵</div>
+            <h2>My Playlist</h2>
         </div>
 
-        <ul class="playlist">
+        <!-- ===== 2025 ===== -->
+        <div class="year-box">
+            <h3>2025</h3>
+            <ul class="playlist playlist-2025"></ul>
+        </div>
+
+        <!-- ===== 2004 ===== -->
+        <div class="year-box">
+            <h3>2004</h3>
+            <ul class="playlist playlist-2004"></ul>
+        </div>
+
+        <!-- ===== DANH SÁCH GỐC (KHÔNG HIỂN THỊ) ===== -->
+        <ul class="all-songs">
 
             <!-- ===== 2025 ===== -->
-            <li class="year-label">2025</li>
-
-            <li data-name="Mừng chúc thọ Cha Mẹ"
-                data-file="Song/Mungchucthochame.mp3">
+            <li data-year="2025" data-name="Mừng chúc thọ Cha Mẹ" data-file="Song/Mungchucthochame.mp3">
                 <span class="song-name">Mừng chúc thọ Cha Mẹ</span>
-                <span class="duration">04:32</span>
+                <span class="duration">2:41</span>
             </li>
 
-            <li data-name="Bài 2"
-                data-file="Song/bai2.mp3">
-                <span class="song-name">Bài 2</span>
-                <span class="duration">03:45</span>
+            <li data-year="2025" data-name="Vị đắng hóa ngọt" data-file="Song/Vidanghoangot.mp3">
+                <span class="song-name">Vị đắng hóa ngọt</span>
+                <span class="duration">5:19</span>
             </li>
 
-            <li data-name="Bài 3"
-                data-file="Song/bai3.mp3">
-                <span class="song-name">Bài 3</span>
-                <span class="duration">05:10</span>
+            <li data-year="2025" data-name="Em đẹp như hoa sen" data-file="Song/Emdepnhuhoasen.mp3">
+                <span class="song-name">Em đẹp như hoa sen</span>
+                <span class="duration">3:54</span>
+            </li>
+
+            <li data-year="2025" data-name="Áo dài hoa Mẹ cho" data-file="Song/Aodaihoamecho.mp3">
+                <span class="song-name">Áo dài hoa Mẹ cho</span>
+                <span class="duration">4:56</span>
+            </li>
+
+            <li data-year="2025" data-name="Quiet love for dad" data-file="Song/Quietlovefordad.mp3">
+                <span class="song-name">Quiet love for dad</span>
+                <span class="duration">3:36</span>
+            </li>
+
+            <li data-year="2025" data-name="Con quỳ lạy Quan Âm" data-file="Song/Conquylayquanam.mp3">
+                <span class="song-name">Con quỳ lạy Quan Âm</span>
+                <span class="duration">3:36</span>
             </li>
 
             <!-- ===== 2004 ===== -->
-            <li class="year-label">2004</li>
-
-            <li data-name="Mong ta mãi có nhau"
-                data-file="Song/Mongtamaiconhau.mp3">
+            <li data-year="2004" data-name="Mong ta mãi có nhau" data-file="Song/Mongtamaiconhau.mp3">
                 <span class="song-name">Mong ta mãi có nhau</span>
-                <span class="duration">04:05</span>
+                <span class="duration">5:20</span>
+            </li>
+
+            <li data-year="2004" data-name="Nụ cười tròn" data-file="Song/Nucuoitron.mp3">
+                <span class="song-name">Nụ cười tròn</span>
+                <span class="duration">3:05</span>
+            </li>
+
+            <li data-year="2004" data-name="Jacaranda" data-file="Song/Jacaranda.mp3">
+                <span class="song-name">Jacaranda</span>
+                <span class="duration">3:47</span>
+            </li>
+
+            <li data-year="2004" data-name="Chocolate đắng" data-file="Song/Chocolatedang.mp3">
+                <span class="song-name">Chocolate đắng</span>
+                <span class="duration">2:45</span>
+            </li>
+
+            <li data-year="2004" data-name="Giọt lệ khô" data-file="Song/Giotlekho.mp3">
+                <span class="song-name">Giọt lệ khô</span>
+                <span class="duration">5:45</span>
             </li>
 
         </ul>
 
     </div>
 
-    <!-- ===== MAIN CONTENT ===== -->
-    <div class="main">
+    <!-- ===== PLAYER ===== -->
+    <div class="player">
 
-        <button id="playAllBtn" class="play-all">
+        <button id="playAllBtn" class="play-all-btn">
             ▶ Play All
         </button>
 
-        <h2 id="songTitle">Chọn bài hát</h2>
+        <h1 id="songTitle">Chọn bài hát</h1>
 
-        <div class="disc"></div>
-
-        <div class="player">
-            <audio id="audioPlayer" controls></audio>
+        <div class="visual-area">
+            <div class="disc-container">
+                <div class="disc" id="disc">
+                    <div class="center"></div>
+                </div>
+            </div>
+            <div id="musicNotes"></div>
         </div>
+
+        <audio id="audioPlayer" controls></audio>
 
     </div>
 
 </div>
 
+<div class="update-label">Last update 17.02.26</div>
+
 <script src="script.js"></script>
+
 </body>
 </html>
