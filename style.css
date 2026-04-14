@@ -285,21 +285,24 @@ audio::-webkit-media-controls-play-button {
     justify-content: space-between;
 }
 
-/* ===== ẢNH BÊN PHẢI ===== */
-.top-image {
-    width: 60px;
-    height: 60px;
-    object-fit: cover;
-
-    border-radius: 12px;
-
-    /* hiệu ứng glow nhẹ */
-    box-shadow: 0 0 15px rgba(255,0,0,0.6);
-
-    transition: 0.3s;
+/* ===== HÀNG ICON + ẢNH ===== */
+.top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
-/* hover cho xịn */
+/* ===== ẢNH ===== */
+.top-image {
+    width: 55px;        
+    height: 55px;       
+    object-fit: cover;  
+    border-radius: 10px;
+    flex-shrink: 0;
+    box-shadow: 0 0 12px rgba(255,0,0,0.5);
+    transition: 0.3s ease;
+}
+
 .top-image:hover {
     transform: scale(1.1);
 }
