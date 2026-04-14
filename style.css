@@ -277,3 +277,29 @@ audio::-webkit-media-controls-play-button {
 .all-songs {
     display: none;
 }
+
+/* ===== TOP ROW ===== */
+.top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* ===== ẢNH BÊN PHẢI ===== */
+.top-image {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    /* hiệu ứng glow nhẹ */
+    box-shadow: 0 0 15px rgba(255,0,0,0.6);
+
+    transition: 0.3s;
+}
+
+/* hover cho xịn */
+.top-image:hover {
+    transform: scale(1.1);
+}
