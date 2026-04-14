@@ -306,3 +306,38 @@ audio::-webkit-media-controls-play-button {
 .top-image:hover {
     transform: scale(1.1);
 }
+
+/* ===== PROFILE ===== */
+.profile {
+    width: 100%;
+}
+
+/* ===== HÀNG ICON + ẢNH ===== */
+.top-row {
+    display: flex;
+    align-items: center;
+
+    width: 100%;
+    gap: 12px;
+}
+
+/* icon 🎵 */
+.avatar {
+    font-size: 42px;
+    flex-shrink: 0;
+}
+
+/* ảnh bên phải */
+.top-image {
+    width: 50px;
+    height: 50px;
+
+    object-fit: cover;
+    border-radius: 10px;
+
+    margin-left: auto;
+
+    flex-shrink: 0;
+
+    box-shadow: 0 0 12px rgba(255,0,0,0.5);
+}
