@@ -89,5 +89,19 @@ function getSongs() {
             currentIndex = -1; // reset khi phát xong hết list
         }
     });
+   // ===== HIỆU ỨNG DISC QUAY =====
+    audio.addEventListener("play", () => disc.classList.add("spinning"));
+    audio.addEventListener("pause", () => disc.classList.remove("spinning"));
+    audio.addEventListener("ended", () => disc.classList.remove("spinning"));
 
+    // ===== HIỆU ỨNG NỐT NHẠC BAY =====
+    audio.addEventListener("play", () => {
+        const notes = ["🎵","🎶","♫"];
+        const note = document.createElement("span");
+        note.className = "note";
+        note.textContent = notes[Math.floor(Math.random()*notes.length)];
+        note.style.left = Math.random()*200 + "px";
+        notesArea.appendChild(note);
+        setTimeout(() => note.remove(), 3000);
+    });
 });
