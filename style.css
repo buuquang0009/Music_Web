@@ -17,11 +17,12 @@ body {
 .container {
     display: flex;
     height: 100vh;
+    overflow: hidden;
 }
 
 /* ================= SIDEBAR ================= */
 .sidebar {
-    width: 400px; /* TO HƠN */
+    width: 400px;
     min-width: 400px;
     background: linear-gradient(180deg, rgba(0,0,0,0.6), rgba(0,0,0,0.3));
     padding: 30px 25px;
@@ -85,6 +86,8 @@ body {
 /* ================= PLAYLIST ================= */
 .playlist {
     list-style: none;
+    width: 100%;
+    overflow: hidden;
 }
 
 /* Song item */
@@ -103,6 +106,8 @@ body {
 
     cursor: pointer;
     transition: all 0.25s ease;
+    width: 100%;
+    max-width: 100%;
 }
 
 /* Hover effect */
@@ -121,6 +126,7 @@ body {
 /* Song name */
 .song-name {
     flex: 1;
+    min-width: 0;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -137,6 +143,7 @@ body {
 /* ================= PLAYER ================= */
 .player {
     flex: 1;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
