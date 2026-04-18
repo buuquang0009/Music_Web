@@ -237,7 +237,26 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
 }
+/* Disc quay */
+.disc.spinning {
+    animation: spin 4s linear infinite;
+}
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
 
+/* Nốt nhạc bay */
+.note {
+    position: absolute;
+    font-size: 24px;
+    animation: floatUp 3s linear forwards;
+    color: #ff4c60;
+}
+@keyframes floatUp {
+    from { transform: translateY(0); opacity: 1; }
+    to { transform: translateY(-150px); opacity: 0; }
+}
 /* ================= AUDIO ================= */
 audio {
     width: 70%;
