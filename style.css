@@ -374,7 +374,7 @@ audio::-webkit-media-controls-play-button {
     position: absolute;
     bottom: 20px;
     left: 20px;
-    width: 40%;          /* chiếm 40% chiều rộng khung player */
+    width: 40vw;          /* chiếm 40% chiều rộng khung player */
     max-width: 600px;    /* không vượt quá 600px */
     height: auto;
     object-fit: contain;
@@ -387,7 +387,7 @@ audio::-webkit-media-controls-play-button {
 }
 @media (max-width: 768px) {
   .decor-image {
-    width: 70%;       /* chiếm nhiều hơn trên màn hình nhỏ */
+    width: 70vw;       /* chiếm nhiều hơn trên màn hình nhỏ */
     max-width: 300px; /* giới hạn kích thước */
     opacity: 0.5;     /* mờ hơn để không che nội dung */
   }
