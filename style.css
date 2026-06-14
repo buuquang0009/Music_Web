@@ -382,4 +382,10 @@ audio::-webkit-media-controls-play-button {
     opacity: 0.9;   /* hơi mờ để hòa vào nền */
 }
 
+.decor-image {
+    mix-blend-mode: screen;   /* hoặc multiply, lighten, tùy nền */
+    opacity: 1;               /* giữ rõ nét */
+}
+
+
 
