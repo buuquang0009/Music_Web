@@ -372,12 +372,13 @@ audio::-webkit-media-controls-play-button {
 
 .decor-image {
     position: absolute;
+    mix-blend-mode: multiply;
     bottom: 20px;   /* cách đáy 20px */
     left: 20px;     /* cách trái 20px */
     width: 150px;   /* chỉnh kích thước phù hợp */
     height: auto;
     object-fit: contain;
-    z-index: 1;     /* nằm dưới các nút điều khiển */
+    z-index: 0;     /* nằm dưới các nút điều khiển */
     opacity: 0.9;   /* hơi mờ để hòa vào nền */
 }
 
