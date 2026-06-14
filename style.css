@@ -380,6 +380,7 @@ audio::-webkit-media-controls-play-button {
     z-index: 0;
 
     mix-blend-mode: screen;   /* hòa với nền tối */
+    opacity: 0.8;
     filter: brightness(1.4) contrast(1.2)
             drop-shadow(0 0 25px rgba(255, 120, 120, 0.8));
 }
