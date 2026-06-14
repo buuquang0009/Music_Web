@@ -374,12 +374,11 @@ audio::-webkit-media-controls-play-button {
     position: absolute;
     bottom: 20px;
     left: 20px;
-    width: 40vw;          /* chiếm 40% chiều rộng khung player */
-    max-width: 600px;    /* không vượt quá 600px */
+    width: 40vw;          /* linh hoạt theo màn hình */
+    max-width: 600px;     /* giới hạn trên laptop */
     height: auto;
     object-fit: contain;
     z-index: 0;
-
     mix-blend-mode: screen;
     opacity: 0.6;
     filter: brightness(1.3) contrast(1.1)
@@ -388,8 +387,14 @@ audio::-webkit-media-controls-play-button {
 @media (max-width: 768px) {
   .decor-image {
     width: 70vw;       /* chiếm nhiều hơn trên màn hình nhỏ */
-    max-width: 300px; /* giới hạn kích thước */
-    opacity: 0.5;     /* mờ hơn để không che nội dung */
+    max-width: 300px;  /* giới hạn kích thước */
+    opacity: 0.5;      /* mờ hơn để không che nội dung */
   }
 }
-
+@media (max-width: 480px) {
+  .decor-image {
+    width: 80vw;       /* gần full chiều ngang trên điện thoại nhỏ */
+    max-width: 250px;
+    opacity: 0.4;
+  }
+}
