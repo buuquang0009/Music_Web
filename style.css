@@ -372,20 +372,14 @@ audio::-webkit-media-controls-play-button {
 
 .decor-image {
     position: absolute;
-    mix-blend-mode: multiply;
-    bottom: 20px;   /* cách đáy 20px */
-    left: 20px;     /* cách trái 20px */
-    width: 850px;   /* chỉnh kích thước phù hợp */
+    bottom: 20px;
+    left: 20px;
+    width: 1400px; 
     height: auto;
     object-fit: contain;
-    z-index: 0;     /* nằm dưới các nút điều khiển */
-    opacity: 1;   /* hơi mờ để hòa vào nền */
+    z-index: 0;
+
+    mix-blend-mode: screen;   /* hòa với nền tối */
+    filter: brightness(1.4) contrast(1.2)
+            drop-shadow(0 0 25px rgba(255, 120, 120, 0.8));
 }
-
-.decor-image {
-    mix-blend-mode: screen;   /* hoặc multiply, lighten, tùy nền */
-    opacity: 1;               /* giữ rõ nét */
-}
-
-
-
