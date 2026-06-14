@@ -389,12 +389,7 @@ audio::-webkit-media-controls-play-button {
     width: 70vw;       /* chiếm nhiều hơn trên màn hình nhỏ */
     max-width: 300px;  /* giới hạn kích thước */
     opacity: 1;      /* mờ hơn để không che nội dung */
+    mix-blend-mode: normal;
   }
 }
-@media (max-width: 480px) {
-  .decor-image {
-    width: 80vw;       /* gần full chiều ngang trên điện thoại nhỏ */
-    max-width: 250px;
-    opacity: 1;
-  }
-}
+
