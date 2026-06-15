@@ -416,9 +416,9 @@ audio::-webkit-media-controls-play-button {
 
 .decor-bird {
     position: absolute;
-    top: -12%;       /* gần sát mép trên */
-    right: -12%;     /* sát mép phải */
-    width: 65%;      /* chim to hơn, chiếm 2/3 đĩa */
+    top: -25%;        /* nâng chim lên cao hơn */
+    right: -25%;      /* lệch sang phải, tránh đĩa */
+    width: 100%;
     height: auto;
     object-fit: contain;
     z-index: 2;
@@ -427,15 +427,15 @@ audio::-webkit-media-controls-play-button {
     filter: brightness(1.4) contrast(1.2)
             drop-shadow(0 0 30px rgba(255, 180, 120, 0.9));
 }
-
-
-
 /* Responsive cho mobile */
 @media (max-width: 768px) {
+  .disc-container {
+    width: 200px;
+    height: 200px;
+  }
   .decor-bird {
-    width: 75%;   /* chim vẫn to nhưng co theo đĩa */
-    top: -15%;
-    right: -15%;
-    opacity: 0.85;
+    top: -30%;
+    right: -30%;
+    width: 120%; 
   }
 }
