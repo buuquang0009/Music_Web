@@ -416,16 +416,16 @@ audio::-webkit-media-controls-play-button {
 
 .decor-bird {
     position: absolute;
-    top: -35%;        /* nâng chim lên cao hơn để tránh đĩa */
-    right: -40%;      /* đẩy chim ra ngoài mép phải */
-    width: 120%;
+    top: -50%;        /* nâng chim lên cao hơn */
+    right: -50%;      /* đẩy chim ra ngoài mép phải */
+    width: 150%;
     height: auto;
     object-fit: contain;
     z-index: 2;
     opacity: 0.9;
     mix-blend-mode: screen;
-    filter: brightness(1.4) contrast(1.2)
-            drop-shadow(0 0 30px rgba(255, 180, 120, 0.9));
+    filter: brightness(1.5) contrast(1.2)
+            drop-shadow(0 0 45px rgba(255, 200, 150, 1));
 }
 /* Responsive cho mobile */
 @media (max-width: 768px) {
@@ -434,8 +434,8 @@ audio::-webkit-media-controls-play-button {
     height: 200px;
   }
   .decor-bird {
-    top: -40%;
-    right: -45%;
-    width: 140%;
+    top: -55%;
+    right: -55%;
+    width: 180%;
   }
 }
