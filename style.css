@@ -413,32 +413,27 @@ audio::-webkit-media-controls-play-button {
     height: 260px;
     overflow: visible;
 }
-
 .decor-bird {
     position: absolute;
-    top: -30%;       /* nâng chim lên nhưng không quá cao */
-    right: -25%;     /* lệch sang phải vừa đủ */
-    width: 80%;      /* nhỏ lại, vừa phải so với đĩa */
+    top: 10%;        /* hạ xuống gần mép trên của đĩa */
+    right: -20%;     /* đặt sát mép phải, không đụng chữ */
+    width: 60%;      /* nhỏ lại, vừa vặn hơn */
     height: auto;
     object-fit: contain;
-    z-index: 1;
+    z-index: 2;
     opacity: 0.95;
 
     /* hiệu ứng sáng đồng bộ với bông sen */
     mix-blend-mode: screen;
     filter: brightness(1.8) contrast(1.2)
-            drop-shadow(0 0 40px rgba(255, 220, 170, 1));
+            drop-shadow(0 0 35px rgba(255, 230, 180, 1));
 }
 
 /* Responsive cho mobile */
 @media (max-width: 768px) {
-  .disc-container {
-    width: 200px;
-    height: 200px;
-  }
   .decor-bird {
-    top: -35%;
-    right: -30%;
-    width: 90%; /* chim co lại theo đĩa, vẫn rõ */
+    top: 12%;        /* hạ thêm chút cho màn nhỏ */
+    right: -25%;
+    width: 70%;      /* giữ tỷ lệ hợp lý */
   }
 }
