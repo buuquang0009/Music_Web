@@ -416,26 +416,26 @@ audio::-webkit-media-controls-play-button {
 
 .decor-bird {
     position: absolute;
-    top: -10%;       /* gần sát mép trên của đĩa */
-    right: -10%;     /* sát bên phải */
-    width: 55%;      /* chim to hơn, chiếm hơn nửa chiều rộng đĩa */
+    top: -12%;       /* gần sát mép trên */
+    right: -12%;     /* sát mép phải */
+    width: 65%;      /* chim to hơn, chiếm 2/3 đĩa */
     height: auto;
     object-fit: contain;
     z-index: 2;
-    opacity: 0.85;
+    opacity: 0.9;
     mix-blend-mode: screen;
-    filter: brightness(1.3) contrast(1.1)
-            drop-shadow(0 0 25px rgba(255, 200, 120, 0.9));
+    filter: brightness(1.4) contrast(1.2)
+            drop-shadow(0 0 30px rgba(255, 180, 120, 0.9));
 }
+
 
 
 /* Responsive cho mobile */
 @media (max-width: 768px) {
   .decor-bird {
-    width: 65%;   /* chim co lại theo đĩa nhưng vẫn rõ */
+    width: 75%;   /* chim vẫn to nhưng co theo đĩa */
     top: -15%;
-    right: -12%;
-    opacity: 0.8;
+    right: -15%;
+    opacity: 0.85;
   }
 }
-
