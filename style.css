@@ -416,9 +416,9 @@ audio::-webkit-media-controls-play-button {
 
 .decor-bird {
     position: absolute;
-    top: -25%;        /* nâng chim lên cao hơn */
-    right: -25%;      /* lệch sang phải, tránh đĩa */
-    width: 100%;
+    top: -35%;        /* nâng chim lên cao hơn để tránh đĩa */
+    right: -40%;      /* đẩy chim ra ngoài mép phải */
+    width: 120%;
     height: auto;
     object-fit: contain;
     z-index: 2;
@@ -434,8 +434,8 @@ audio::-webkit-media-controls-play-button {
     height: 200px;
   }
   .decor-bird {
-    top: -30%;
-    right: -30%;
-    width: 120%; 
+    top: -40%;
+    right: -45%;
+    width: 140%;
   }
 }
