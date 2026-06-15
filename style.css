@@ -408,7 +408,7 @@ audio::-webkit-media-controls-play-button {
 
 /* ảnh chim bên góc phải cái đĩa */
 .disc-container {
-    position: relative; /* để ảnh chim bám theo container */
+    position: relative;
     width: 260px;
     height: 260px;
     overflow: visible;
@@ -416,17 +416,20 @@ audio::-webkit-media-controls-play-button {
 
 .decor-bird {
     position: absolute;
-    top: -70%;        /* nâng chim cao hơn, tránh chữ */
-    right: -70%;      /* đẩy chim ra ngoài mép phải */
-    width: 220%; 
+    top: -30%;       /* nâng chim lên nhưng không quá cao */
+    right: -25%;     /* lệch sang phải vừa đủ */
+    width: 80%;      /* nhỏ lại, vừa phải so với đĩa */
     height: auto;
     object-fit: contain;
     z-index: 1;
-    opacity: 1;
+    opacity: 0.95;
+
+    /* hiệu ứng sáng đồng bộ với bông sen */
     mix-blend-mode: screen;
-    filter: brightness(2) contrast(1.3)
-            drop-shadow(0 0 60px rgba(255, 230, 180, 1));
+    filter: brightness(1.8) contrast(1.2)
+            drop-shadow(0 0 40px rgba(255, 220, 170, 1));
 }
+
 /* Responsive cho mobile */
 @media (max-width: 768px) {
   .disc-container {
@@ -434,8 +437,8 @@ audio::-webkit-media-controls-play-button {
     height: 200px;
   }
   .decor-bird {
-    top: -75%;
-    right: -75%;
-    width: 250%;
+    top: -35%;
+    right: -30%;
+    width: 90%; /* chim co lại theo đĩa, vẫn rõ */
   }
 }
