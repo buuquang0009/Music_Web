@@ -406,3 +406,34 @@ audio::-webkit-media-controls-play-button {
 }
 
 
+.disc-container {
+    position: relative; /* để ảnh chim bám theo container */
+    width: 260px;
+    height: 260px;
+}
+/* Chim bên góc phải cái đĩa */
+.decor-bird {
+    position: absolute;
+    top: -20%;       /* đặt chim lên trên đĩa theo % chiều cao */
+    right: -15%;     /* lệch sang phải, gần sát đĩa */
+    width: 40%;      /* chim chiếm 40% chiều rộng đĩa */
+    height: auto;
+    object-fit: contain;
+    z-index: 2;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 12px rgba(255, 215, 0, 0.7));
+}
+
+/* Responsive cho mobile */
+@media (max-width: 768px) {
+  .disc-container {
+    width: 200px;
+    height: 200px;
+  }
+  .decor-bird {
+    top: -25%;
+    right: -20%;
+    width: 50%; /* chim co lại theo đĩa */
+  }
+}
+
