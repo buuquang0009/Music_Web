@@ -415,7 +415,7 @@ audio::-webkit-media-controls-play-button {
 }
 .decor-bird {
     position: absolute;
-    top: 15%;        
+    top: 5%;        
     right: -25%;     /* sát mép phải, không đụng chữ */
     width: 75%;     
     height: auto;
