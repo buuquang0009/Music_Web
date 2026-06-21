@@ -374,8 +374,8 @@ audio::-webkit-media-controls-play-button {
     position: absolute;
     bottom: 20px;
     left: 20px;
-    width: 20vw;          /* linh hoạt theo màn hình */
-    max-width: 500px;     /* giới hạn trên laptop */
+    width: 10vw;          /* linh hoạt theo màn hình */
+    max-width: 250px;     /* giới hạn trên laptop */
     height: auto;
     object-fit: contain;
     z-index: 0;
