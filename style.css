@@ -374,8 +374,8 @@ audio::-webkit-media-controls-play-button {
     position: absolute;
     bottom: 20px;
     left: 20px;
-    width: 22vw;          /* linh hoạt theo màn hình */
-    max-width: 600px;     /* giới hạn trên laptop */
+    width: 15vw;          /* linh hoạt theo màn hình */
+    max-width: 400px;     /* giới hạn trên laptop */
     height: auto;
     object-fit: contain;
     z-index: 0;
@@ -415,9 +415,9 @@ audio::-webkit-media-controls-play-button {
 }
 .decor-bird {
     position: absolute;
-    top: 25%;        
-    right: -15%;     /* sát mép phải, không đụng chữ */
-    width: 90%;     
+    top: 35%;        
+    right: -25%;     /* sát mép phải, không đụng chữ */
+    width: 70%;     
     height: auto;
     object-fit: contain;
     z-index: 2;
