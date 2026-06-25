@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
 
     const audio = document.getElementById("audioPlayer");
+    const video = document.getElementById("videoPlayer");
     const title = document.getElementById("songTitle");
     const playAllBtn = document.getElementById("playAllBtn");
 
@@ -30,22 +31,37 @@ function getSongs() {
 
 
     /* ===== PHÁT THEO INDEX ===== */
-    function playByIndex(index) {
+function playByIndex(index) {
+    const songs = getSongs();
+    if (!songs[index]) return;
 
-        const songs = getSongs();
-        if (!songs[index]) return;
+    currentIndex = index;
+    const song = songs[currentIndex];
 
-        currentIndex = index;
+    title.textContent = song.dataset.name;
 
-        const song = songs[currentIndex];
+    if (song.dataset.video) {
+        // Phát video
+        audio.pause();
+        audio.style.display = "none";
 
-        title.textContent = song.dataset.name;
+        video.querySelector("source").src = song.dataset.video;
+        video.style.display = "block";
+        video.load();
+        video.play();
+    } else {
+        // Phát audio
+        video.pause();
+        video.style.display = "none";
+
         audio.src = song.dataset.file;
+        audio.style.display = "block";
         audio.play();
-
-        songs.forEach(li => li.classList.remove("active"));
-        song.classList.add("active");
     }
+
+    songs.forEach(li => li.classList.remove("active"));
+    song.classList.add("active");
+}
 
     /* ===== CLICK TỪNG BÀI ===== */
     document.addEventListener("click", function (e) {
@@ -89,6 +105,19 @@ function getSongs() {
             currentIndex = -1; // reset khi phát xong hết list
         }
     });
+    video.addEventListener("ended", function () {
+    if (!isPlayingAll) return;
+
+    const songs = getSongs();
+
+    if (currentIndex < songs.length - 1) {
+        playByIndex(currentIndex + 1);
+    } else {
+        isPlayingAll = false;
+        currentIndex = -1; // reset khi phát xong hết list
+    }
+});
+
    // ===== HIỆU ỨNG DISC QUAY =====
     audio.addEventListener("play", () => disc.classList.add("spinning"));
     audio.addEventListener("pause", () => disc.classList.remove("spinning"));
