@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function () {
+
     const audio = document.getElementById("audioPlayer");
     const title = document.getElementById("songTitle");
     const playAllBtn = document.getElementById("playAllBtn");
@@ -6,25 +7,27 @@ document.addEventListener("DOMContentLoaded", function () {
     let currentIndex = -1;
     let isPlayingAll = false;
 
-    // Copy bài từ all-songs sang từng năm
+    /* ===== COPY BÀI TỪ all-songs SANG TỪNG NĂM ===== */
     const sourceContainer = document.querySelector(".all-songs");
     const sourceSongs = sourceContainer.querySelectorAll("li");
+
     sourceSongs.forEach(song => {
         const year = song.dataset.year;
         const clone = song.cloneNode(true);
         const target = document.querySelector(".playlist-" + year);
         if (target) target.appendChild(clone);
     });
+
     sourceContainer.remove();
 
-    // Lấy danh sách bài hát
+    /* ===== CHỈ LẤY BÀI ĐANG HIỂN THỊ ===== */
     function getSongs() {
         return Array.from(
             document.querySelectorAll(".playlist-2025 li, .playlist-2004 li, .playlist-2026 li")
         );
     }
 
-    // Phát theo index
+    /* ===== PHÁT THEO INDEX ===== */
     function playByIndex(index) {
         const songs = getSongs();
         if (!songs[index]) return;
@@ -40,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
         song.classList.add("active");
     }
 
-    // Click từng bài
+    /* ===== CLICK TỪNG BÀI ===== */
     document.addEventListener("click", function (e) {
         const li = e.target.closest(".playlist li[data-file]");
         if (!li) return;
@@ -52,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
         playByIndex(index);
     });
 
-    // Play All
+    /* ===== PLAY ALL ===== */
     playAllBtn.addEventListener("click", function () {
         const songs = getSongs();
         if (!songs.length) return;
@@ -66,7 +69,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Tự động phát bài tiếp
+    /* ===== TỰ ĐỘNG PHÁT BÀI TIẾP ===== */
     audio.addEventListener("ended", function () {
         if (!isPlayingAll) return;
 
@@ -79,12 +82,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
-    // Hiệu ứng disc quay
+    // ===== HIỆU ỨNG DISC QUAY =====
     audio.addEventListener("play", () => disc.classList.add("spinning"));
     audio.addEventListener("pause", () => disc.classList.remove("spinning"));
     audio.addEventListener("ended", () => disc.classList.remove("spinning"));
 
-    // Hiệu ứng nốt nhạc bay
+    // ===== HIỆU ỨNG NỐT NHẠC BAY =====
     audio.addEventListener("play", () => {
         const notes = ["🎵","🎶","♫"];
         const note = document.createElement("span");
