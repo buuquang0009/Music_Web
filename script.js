@@ -25,7 +25,7 @@ sourceContainer.remove();
     /* ===== CHỈ LẤY BÀI ĐANG HIỂN THỊ ===== */
 function getSongs() {
     return Array.from(
-        document.querySelectorAll(".playlist-2025 li, .playlist-2004 li")
+        document.querySelectorAll(".playlist-2025 li, .playlist-2004 li, .playlist-2026 li")
     );
 }
 
